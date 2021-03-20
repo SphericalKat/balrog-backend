@@ -2,7 +2,6 @@ package main
 
 import (
 	"bytes"
-	"encoding/json"
 	"github.com/PuerkitoBio/goquery"
 	"github.com/elazarl/goproxy"
 	"io/ioutil"
@@ -48,11 +47,11 @@ func main() {
 				elemList = append(elemList, removeGarbage(selection.Text())) // add cleaned text to slice
 			})
 
-			log.Println(json.Marshal(elemList))
+			log.Println(elemList)
 		}
 
 		return r
 	})
 
-	log.Fatal(http.ListenAndServe(":6969", proxy))
+	log.Fatal(http.ListenAndServe(":6969", proxy)) // serve proxy
 }
